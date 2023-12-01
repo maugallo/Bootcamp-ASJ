@@ -1,0 +1,209 @@
+body{
+    margin: 0 100px;
+    margin-top: 20px;
+    font-family: Arial;
+}
+
+.header .header-bottom{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    margin-top: 15px;
+}
+
+.header .header-bottom .bread-crumb{
+    display: flex;
+    align-items: center;
+}
+
+.header .header-bottom .bread-crumb .title{
+    margin: 0;
+    margin-right: 10px;
+    font-size: large;
+}
+
+.header .header-bottom .bread-crumb .title .link{
+    color: black;
+    text-decoration: none;
+}
+
+.header .header-bottom .bread-crumb .arrow{
+    margin-right: 10px;
+    color: gray;
+}
+
+.header .header-bottom .bread-crumb .product{
+    padding: 0;
+}
+
+.header .header-bottom .search-bar{
+    display: flex;
+    height: 35px;
+    justify-content: center;
+}
+
+.header .header-bottom .search-bar .input{
+    border: 1px solid lightgray;
+    width: 50%;
+    padding-left: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.header .header-bottom .search-bar .button{
+    width: 40px;
+    border: 1px solid rgb(30, 30, 30);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+    font-size: large;
+}
+
+.header .header-bottom .div-dropdown{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header .header-bottom .div-dropdown .dropdown{
+    appearance: none;
+    padding: 10px;
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
+
+.main{
+    display: flex;
+    margin-top: 30px;
+}
+
+.main .img-section{
+    width: 500;
+    height: 550px;
+}
+
+.main .img-section .img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.main .info-section{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.main .info-section .product-title{
+    text-align: center;
+    font-size: xx-large;
+    margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.main .info-section .product-price{
+    text-align: start;
+    font-size: larger;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+.main .info-section .product-colors .colors-list{
+    list-style: none;
+    display: flex;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main .info-section .product-colors .colors-list .color-black{
+    width: 28px;
+    height: 25px;
+    background-color: black;
+    border: 1px solid black;
+    margin-right: 2px;
+}
+
+.main .info-section .product-colors .colors-list .color-red{
+    width: 28px;
+    height: 25px;
+    background-color: rgb(239, 110, 110);
+    border: 1px solid black;
+    margin-right: 2px;
+}
+
+.main .info-section .product-colors .colors-list .color-blue{
+    width: 28px;
+    height: 25px;
+    background-color: rgb(112, 112, 246);
+    border: 1px solid rgb(112, 112, 246);
+    margin-right: 2px;
+}
+
+.main .info-section .product-colors .colors-list .color-purple{
+    width: 28px;
+    height: 25px;
+    background-color: rgb(129, 57, 129);
+    border: 1px solid rgb(129, 57, 129);
+    margin-right: 2px;
+}
+
+.main .info-section .product-colors .colors-list .color-orange{
+    width: 28px;
+    height: 25px;
+    background-color: rgb(248, 180, 54);
+    border: 1px solid rgb(248, 180, 54);
+    margin-right: 2px;
+}
+
+.main .info-section .quantity{
+    display: flex;
+    align-items: center;
+}
+
+.main .info-section .button-minus{
+    border-radius: 50%;
+    width: 35px;
+    height: 30px;
+    background-color: rgb(40, 139, 173);
+    border: 1px solid rgb(40, 139, 173);
+    color: white;
+    padding: 10px;
+    margin-left: 15px;
+}
+
+.main .info-section .button-plus{
+    border-radius: 50%;
+    width: 35px;
+    height: 30px;
+    background-color: rgb(40, 139, 173);
+    border: 1px solid rgb(40, 139, 173);
+    color: white;
+    padding: 10px;
+}
+
+.main .info-section .input-number{
+    height: 35px;
+    width: 50px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: large;
+}
+
+.main .info-section .add-button-div{
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.main .info-section .add-button{
+    height: 40px;
+    width: 140px;
+    background-color: rgb(40, 139, 173);
+    padding: 5px;
+    border: none;
+    color: white;
+    font-size: medium;
+}
+
+
+.main .info-section .description{
+    object-fit: contain;
+}

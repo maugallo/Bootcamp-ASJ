@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaPet</title>
+    <link rel="shortcut icon" href="media/caticon.ico">
+</head>
+<body>
+    <h1>¡Bienvenido a InstaPet!</h1>
+    <p>La red social favorita para tu mascota. Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ullam quaerat, repellat vel error officiis ea architecto exercitationem modi aperiam.</p>
+
+    <h2>Registrar mascota:</h2>
+    <form action="x.php" method="post">
+        <div>
+            <label for="txtNombre">Nombre</label>
+            <br>
+            <input type="text" id="txtNombre" name="nombre" placeholder="Ingresa el nombre de tu mascota" maxlength="20" required>
+        </div>
+
+        <div>
+            <label for="txtEdad">Edad</label>
+            <br>
+            <input type="number" id="txtEdad" name="edad" placeholder="Ingresa la edad de tu mascota" min="0" max="100" required>
+        </div>
+
+        <div>
+            <label for="txtEmail">Mail</label>
+            <br>
+            <input type="email" id="txtEmail" name="email" placeholder="Ingresa tu email" maxlength="80" required>
+        </div>
+
+        <div>
+            <label for="txtPass">Contraseña</label>
+            <br>
+            <input type="password" id="txtPass" name="password" placeholder="Ingresa una contraseña" minlength="8" maxlength="30" required>
+        </div>
+
+        <div>
+            <label for="txtColor">Color</label>
+            <br>
+            <input type="color" id="txtColor" name="color" required>
+        </div>
+
+        <div>
+            <label for="radioSexo">Sexo</label>
+            <br>
+            <input type="radio" id="radioSexo" name="sexo" value="macho" checked>Macho
+            <input type="radio" id="radioSexo" name="sexo" value="hembra">Hembra
+        </div>
+
+        <div>
+            <label for="ddlMascota">Tipo de mascota</label>
+            <br>
+            <select name="tipoMascota" id="ddlMascota">
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="pajaro">Pájaro</option>
+                <option value="otro">Otro</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="checkbox" id="chkCondiciones" value="true"><label for="chkCondiciones">Aceptar bases y condiciones</label>
+        </div>
+
+        <div>
+            <label for="txtDescripcion">Descripción:</label>
+            <br>
+            <textarea name="descripcion" id="txtDescripcion" cols="40" rows="10" placeholder="Cuéntanos un poco sobre tu mascota..." required></textarea>
+        </div>
+        
+        <div>
+            <br>
+            <button type="submit">Registrarse</button>
+        </div>
+    </form>
+
+    <h2>Veterinaria recomendada:</h2>
+    <iframe frameborder="1" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3292.847974257013!2d-59.09730861623006!3d-34.379786676164024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb7f52a6bc7663%3A0x108011372a5eb72!2sVeterinaria%20Del%20Parque!5e0!3m2!1ses!2sar!4v1701225695140!5m2!1ses!2sar" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <h2>Algunos bloopers:</h2>
+    <iframe frameborder="1" width="660" height="415" src="https://www.youtube.com/embed/ML6LjKoyk8A?si=Oi7fgEJwS2ExcfAM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</body>
+</html>
