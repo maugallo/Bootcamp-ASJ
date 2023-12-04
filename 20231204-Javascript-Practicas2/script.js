@@ -82,6 +82,6 @@ switch (resp2.toLowerCase()) {
 }
 
 if (saludo){
-    console.log("Gracias por tu visita al cine!");
+    console.log(`Tu calificación fue ${resp2}. Gracias por tu visita al cine!`);
 }
 */
