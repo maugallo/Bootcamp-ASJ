@@ -1,19 +1,21 @@
 //Ejercicio 1:
-/*
-let num = Number(prompt("Ingrese el número"));
-let simbolo = "*";
-let indexMax = num -1;
 
-for (let index = 0; index < num; index++) {
+let num = Number(prompt("Ingrese el número"));
+let simbolo = "";
+
+for (let index = 0; index <= num; index++) {
     console.log(simbolo);
     simbolo += "*";
 }
 
-for(index = num; index > 0; index--){
-    console.log(simbolo.substring(0, indexMax));
-    indexMax --;
+for(let index = num; index > 0; index--){
+    simbolo = "";
+    for(let index2 = 0; index2 < index-1; index2++){
+        simbolo += "*";
+    }
+    console.log(simbolo);
 }
-*/
+
 
 //Ejercicio 2:
 /* 
@@ -25,4 +27,4 @@ for(let index = num-1; index > 0; index--){
 }
 
 alert(`El factorial de ${num} es ${factorial}`);
-*/
+ */
