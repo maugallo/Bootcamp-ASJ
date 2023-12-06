@@ -32,7 +32,7 @@ btnNueve.addEventListener("click", function () { ingresarBoton("9") });
 let btnCero = document.getElementById("btn-cero");
 btnCero.addEventListener("click", function () { ingresarBoton("0") });
 
-//Botones de símbolos matemáticos: (Pasar todos los btn a clases y usar un for)
+//Botones de símbolos matemáticos: (Pasar todos los btn a clases y usar un for) 
 let btnSuma = document.getElementById("btn-suma");
 btnSuma.addEventListener("click", function(){ ingresarBoton("+") });
 
