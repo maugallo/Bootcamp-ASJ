@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Windows</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="calculatorStyle.css">
+</head>
+<body class="bg-color">
+    <div class="row container">
+        <!-- Panel principal -->
+        <div class="col-md-9">
+            <!-- Visor de valores -->
+            <div class="row">
+                <div class="col py-3">
+                    <div><span class="value" id="visor">0</span></div>
+                </div>
+            </div>
+            <!-- Sección de botones -->
+            <div class="row">
+                <div class="row p-0 m-0">
+                    <div class="col-3">
+                        <button class="btn btn-secondary btn-bg-gray btn-calculadora">%</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-bg-gray btn-calculadora btn-clear">CE</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-bg-gray btn-calculadora btn-clear">C</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-bg-gray btn-calculadora">⌫</button></div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora">x</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora">x</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora">x</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-division">÷</button></div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-siete">7</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-ocho">8</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-nueve">9</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-multiplicacion">×</button></div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-cuatro">4</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-cinco">5</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-seis">6</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-resta">−</button></div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-uno">1</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-dos">2</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-tres">3</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-suma">+</button></div>
+                </div>
+                <div class="row p-0 m-0">
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora">+/-</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-cero">0</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora">,</button></div>
+                    <div class="col-3"><button class="btn btn-secondary btn-calculadora" id="btn-igual">=</button></div>
+                </div>
+            </div>
+        </div>
+        <!-- Panel lateral -->
+        <div class="col-md-3">
+
+        </div>
+    </div>
+
+
+
+    <script src="scriptCalculator.js"></script>
+</body>
+</html>

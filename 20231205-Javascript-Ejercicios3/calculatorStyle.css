@@ -1,0 +1,36 @@
+.bg-color{
+    background-color: rgb(235, 235, 235);
+}
+
+.value{
+    font-size: 5rem;
+    display: flex;
+    justify-content: end;
+}
+
+.btn-calculadora{
+    display: flex;
+    justify-content: center;
+    padding: 11% 55%;
+    background-color: white;
+    color: black;
+    border-color: lightgray;
+    max-width: 6rem;
+    font-size: xx-large;
+}
+
+.btn-calculadora:hover{
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border-color: lightgray;
+}
+
+#btn-igual{
+    background-color: rgb(0, 116, 202);
+    color: white;
+}
+
+#btn-igual:hover{
+    background-color: rgb(37, 133, 207);
+    color: white;
+}
