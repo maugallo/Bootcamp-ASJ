@@ -29,3 +29,8 @@
     background-color: #0b9ab3;
     border-color: #0b9ab3;
 }
+
+.btn-pay:disabled{
+    background-color: #0b9ab3;
+    border-color: #0b9ab3;
+}

@@ -1,5 +1,4 @@
 const notyf = new Notyf();
-const arrayProductos = [];
 
 let cantidadProducto = document.getElementById("cantidad");
 let nombreProducto = document.getElementById("nombre-producto");
@@ -18,13 +17,23 @@ function restarCantidad(){
 }
 
 function agregarProducto(){
-    arrayProductos.push({nombre: nombreProducto.value, precio: precioProducto.value, cantidad: cantidadProducto.value});
+    let producto = {nombre: nombreProducto.value, precio: precioProducto.value, cantidad: cantidadProducto.value};
+    if (localStorage.getItem("productos") === null){
+        let arrayProductos = [];
+        //Agrego al array vacío el producto.
+        arrayProductos.push(producto);
+        //Seteo el local storage con el array entero.
+        localStorage.setItem("productos", JSON.stringify(arrayProductos));
+    } else{
+        let arrayTemporal = JSON.parse(localStorage.getItem("productos"));
+        arrayTemporal.push(producto);
+        localStorage.setItem("productos", JSON.stringify(arrayTemporal));
+    };
     notyf.success("¡Producto agregado correctamente!");
 }
 
 function redirigirCarrito(){
-    if (arrayProductos.length > 0){
-        localStorage.setItem("productos", JSON.stringify(arrayProductos));
-    }
+    //Validar que la key "producto" exista. Si no existe, crearla. SI ya existe, capturar lo que venga
+    //parsearlo con JSON y unirlo al arreglo.
     window.location.href = "ecommerce-cart.html";
 }

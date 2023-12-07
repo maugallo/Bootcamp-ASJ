@@ -39,8 +39,8 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">PAY PRODUCTS</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              ...
+            <div class="modal-body" id="modal-pay">
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
@@ -79,13 +79,15 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Subtotal</th>
+                                <th scope="col">Eliminar</th>
                               </tr>
                             </thead>
                             <tbody id="table-body">
+                                <!-- Products content -->
                             </tbody>
                         </table>
                         <div class="text-end">
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-lg btn-primary btn-pay w-25" onclick="pagarProducto()">PAY</button>
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-lg btn-primary btn-pay w-25" id="btn-pay">PAY</button>
                         </div>
                     </section>
                 </div>
