@@ -20,3 +20,4 @@ function esVocal(tecla){
         return false;
     }
 }
+

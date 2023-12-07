@@ -1,0 +1,31 @@
+/* Cart icon */
+.breadcrumb-home{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.breadcrumb-arrow{
+    color: gray;
+}
+
+.breadcrumb-product{
+    color: black;
+    font-weight: 500;
+}
+/* Product List */
+.product-item{
+    list-style: none;
+}
+
+.btn-pay{
+    border-radius: 0;
+    color: white;
+    background-color: #52B5C6;
+    border-color: #52B5C6;
+}
+
+.btn-pay:hover{
+    background-color: #0b9ab3;
+    border-color: #0b9ab3;
+}

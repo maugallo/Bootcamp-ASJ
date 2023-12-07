@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique</title>
+    <!-- Bootstrap style & script -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- My styles -->
+    <link rel="stylesheet" href="styles/style-header.css">
+    <link rel="stylesheet" href="styles/style-index.css">
+</head>
+<body class="container mt-2">
+    <!-- Header & Navbar -->
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-evenly justify-content-sm-between py-3 mb-4 align-items-center ">
+            <a href="ecommerce-index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4 tittle">BOUTIQUE</span>
+            </a>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="ecommerce-index.html" class="nav-link item">HOME</a></li>
+                <li class="nav-item"><a href="#" class="nav-link item item-shop">SHOP</a></li>
+                <li class="nav-item"><a href="#" class="nav-link item"><select class="item-dropdown" name="" id="" value=""><option value="">DEMOS | ▼</option></select></a></li>
+                <li class="nav-item"><a href="#" class="nav-link item"><select class="item-dropdown" name="" id=""><option value="">BLOCKS | ▼</option></select></a></li>
+                <li class="nav-item"><a href="#" class="nav-link item">COMPONENTS</a></li>
+                <li class="nav-item"><a href="#" class="nav-link item">CONTACT US</a></li>
+                <li class="nav-item"><a href="#" class="nav-link item">MY CART</a></li>
+            </ul>
+        </header>
+      </div>
+    <!-- Main -->
+    <main>
+        <!-- Top bar -->
+        <section>
+            <div class="container d-flex flex-wrap justify-content-center">
+                <!-- Searchbar & dropdown -->
+                <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto d-inline-flex" role="search">
+                  <input type="search" class="search-bar ps-2" placeholder="Search..." aria-label="Search">
+                  <button class="btn btn-dark me-4 search-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                  </svg></button>
+                  <select class="bg-dark text-white py-2 px-3 topbar-dropdown" name="" id=""><option value="">PUBLIC PRICELIST ▼</option></select>
+                </div>
+                <!-- Pagination -->
+                <div class="text-end">
+                    <nav aria-label="...">
+                        <ul class="pagination mb-0 mt-lg-1 mt-sm-3 mt-3">
+                          <li class="disabled">
+                            <a class="page-link">Prev</a>
+                          </li>
+                          <li class="page-item active" aria-current="page"><a class="page-link paginacion-seleccionado" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link paginacion-item" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link paginacion-item" href="#">3</a></li>
+                          <li class="page-item"><a class="page-link paginacion-item" href="#">4</a></li>
+                          <li class="page-item paginacion-item">
+                            <a class="page-link paginacion-item" href="#">Next</a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
+            </div>
+        </section>
+        <!-- Products section -->
+        <section class="container mt-5 mb-4">
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title product-title"> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+
+              <div class="row row-cols-1 row-cols-md-4 g-4 mt-2">
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+                <div class="col">
+                  <article class="card product">
+                    <img src="https://cdn11.bigcommerce.com/s-abmjjefojj/images/stencil/1280x1280/products/2500/17497/Diapositiva6__81563.1682548583.JPG?c=1&imbypass=on" class="card-img-top product-img" alt="...">
+                    <div class="card-body">
+                      <h5> <a class="card-title product-title" href="ecommerce-product-a.html">Fernet Bottle</a></h5>
+                      <p class="card-text product-price pb-2">$500.00</p>
+                    </div>
+                  </article>
+                </div>
+              </div>
+        </section>
+    </main>
+</body>
+</html>

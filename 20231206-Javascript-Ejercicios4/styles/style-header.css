@@ -1,0 +1,38 @@
+/* Header styles */
+.tittle{
+    font-weight: bold;
+}
+
+.item{
+    color: black;
+    font-weight: 700;
+}
+
+.item:hover{
+    color: #68C4CE;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.item-shop{
+    color: #68C4CE;
+}
+
+.item-shop:hover{
+    color: #0f9baa;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.item-dropdown{
+    color: black;
+    font-weight: 700;
+    appearance: none;
+    border: none;
+}
+
+.item-dropdown:hover{
+    color: #68C4CE;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
