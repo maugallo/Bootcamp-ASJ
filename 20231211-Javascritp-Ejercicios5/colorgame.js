@@ -1,3 +1,5 @@
+//EJERCICIO CON PAIR PROGRAMMING | Simón Sueldo y Mauro Gallo
+
 let colors = [];
 const cuadrados = document.querySelectorAll(".square");
 const titulo = document.getElementById("h1");
@@ -17,11 +19,7 @@ colors = generateRandomColors(cuadrados.length);
 pickedColor = pickColor();
 colorDisplay.textContent = pickedColor;
 
-// Evento para reiniciar el juego
-
-resetBtn.addEventListener("click", reset);
-
-// evento para jugar
+// Evento para jugar
 
 cuadrados.forEach((cuadrado, i) => {
   cuadrado.style.backgroundColor = colors[i];
@@ -29,7 +27,7 @@ cuadrados.forEach((cuadrado, i) => {
   cuadrado.addEventListener("click", (e) => {
     clickedColor = e.target.id;
     if (clickedColor != pickedColor) {
-      cuadrado.style.backgroundColor = colorFondo;
+      cuadrado.style.backgroundColor = colorFondo; //Desaparecer cuadrado.
       message.textContent = "Intentalo Nuevamente";
     } else {
       message.textContent = "Correcto!";
@@ -39,18 +37,24 @@ cuadrados.forEach((cuadrado, i) => {
   });
 });
 
-// botones para elegir dificultad
+// Evento para reiniciar el juego
+
+resetBtn.addEventListener("click", reset);
+
+// Botones para elegir dificultad
 
 easyBtn.addEventListener("click", isSelected);
 hardBtn.addEventListener("click", isSelected);
 
-/* funciones utiles */
+/* Funciones utiles */
 
 function isSelected(e) {
   if (e.target.id == "easy") {
     toggleDifficultyBtn();
+    //Código para activar el modo fácil.
   } else if (e.target.id == "hard") {
     toggleDifficultyBtn();
+    //Código para activar el modo difícil.
   }
 }
 
@@ -73,7 +77,7 @@ function reset() {
 }
 
 function pickColor() {
-  return colors[Math.floor(Math.random() * colors.length)];
+  return colors[Math.floor(Math.random() * colors.length)]; //Retorna un número aleatorio entre 0 y 5.
 }
 
 function changeColors(clickedColor) {
@@ -96,5 +100,5 @@ function randomColor() {
 }
 
 function numeroAleatorio() {
-  return Math.floor(Math.random() * (255 - 1) + 1);
+  return Math.floor(Math.random() * (255 - 1) + 1); //Retorna un número aleatorio entre 1 y 255.
 }
