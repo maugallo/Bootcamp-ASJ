@@ -4,8 +4,8 @@ let btnPay = document.getElementById("btn-pay");
 let arrayProductos;
 
 window.addEventListener("load", () =>{
-    arrayProductos = JSON.parse(localStorage.getItem("productos"));
-    if (arrayProductos != null){
+    if (localStorage.getItem("productos") != null){
+        arrayProductos = JSON.parse(localStorage.getItem("productos"));
         for(let index = 0; index < arrayProductos.length; index++){
             //Defino el tr:
             let tr = document.createElement("tr");
@@ -21,13 +21,12 @@ window.addEventListener("load", () =>{
             let trProductQuantity = document.createTextNode(arrayProductos[index].cantidad);
                 //Multiplico la cantidad de productos seleccionados por su precio:
             let trSubtotal = document.createTextNode(`$${Number(arrayProductos[index].cantidad) * Number(arrayProductos[index].precio)}`);
-            let trEliminar = document.createTextNode("");
             //Enlazo cada columna con su contenido:
             tdName.appendChild(trProductName);
             tdPrice.appendChild(trProductPrice);
             tdQuantity.appendChild(trProductQuantity);
             tdSubtotal.appendChild(trSubtotal);
-            tdEliminar.appendChild(trEliminar);
+            tdEliminar.innerHTML = `<a class="me-2 text-decoration-none btn btn-outline-danger" href="" onclick="eliminarProducto(${arrayProductos[index].codigo})">Eliminar</a>`;
             //Enlazo cada columna al tr
             tr.appendChild(tdName);
             tr.appendChild(tdPrice);
@@ -43,10 +42,13 @@ window.addEventListener("load", () =>{
     }
 });
 
-btnPay.addEventListener("click", () =>{
-    let modalBody = document.getElementById("modal-pay");
-    arrayProductos = JSON.parse(localStorage.getItem("productos"));
-    if (arrayProductos != null){
-        
+function eliminarProducto(codigo){
+    let arrayProductos = JSON.parse(localStorage.getItem("productos"));
+    let index = arrayProductos.findIndex(producto => producto.codigo === codigo);
+    arrayProductos.splice(index, 1);
+    if ( arrayProductos.length > 0){
+        localStorage.setItem("productos", JSON.stringify(arrayProductos));
+    } else{
+        localStorage.removeItem("productos");
     }
-});
+}

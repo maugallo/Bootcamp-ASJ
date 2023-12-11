@@ -17,23 +17,23 @@ function restarCantidad(){
 }
 
 function agregarProducto(){
-    let producto = {nombre: nombreProducto.value, precio: precioProducto.value, cantidad: cantidadProducto.value};
+    let arrayProductos = [];
     if (localStorage.getItem("productos") === null){
-        let arrayProductos = [];
+        let producto = {codigo: 1, nombre: nombreProducto.value, precio: precioProducto.value, cantidad: cantidadProducto.value};
         //Agrego al array vacío el producto.
         arrayProductos.push(producto);
         //Seteo el local storage con el array entero.
         localStorage.setItem("productos", JSON.stringify(arrayProductos));
     } else{
-        let arrayTemporal = JSON.parse(localStorage.getItem("productos"));
-        arrayTemporal.push(producto);
-        localStorage.setItem("productos", JSON.stringify(arrayTemporal));
+        arrayProductos = JSON.parse(localStorage.getItem("productos"));
+        let ultimoCodigo = arrayProductos[arrayProductos.length - 1].codigo;
+        let producto = {codigo: ultimoCodigo + 1, nombre: nombreProducto.value, precio: precioProducto.value, cantidad: cantidadProducto.value};
+        arrayProductos.push(producto);
+        localStorage.setItem("productos", JSON.stringify(arrayProductos));
     };
     notyf.success("¡Producto agregado correctamente!");
 }
 
 function redirigirCarrito(){
-    //Validar que la key "producto" exista. Si no existe, crearla. SI ya existe, capturar lo que venga
-    //parsearlo con JSON y unirlo al arreglo.
     window.location.href = "ecommerce-cart.html";
 }

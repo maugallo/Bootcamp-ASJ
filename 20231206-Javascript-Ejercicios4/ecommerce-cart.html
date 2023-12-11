@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique</title>
     <!-- Bootstrap style & script-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <!-- Notyf styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <!-- My style -->
     <link rel="stylesheet" href="styles/style-header.css">
     <link rel="stylesheet" href="styles/style-cart.css">
 </head>
+
 <body class="container mt-2">
     <!-- Header & Navbar -->
     <div class="container">
-        <header class="d-flex flex-wrap justify-content-evenly justify-content-sm-between py-3 mb-4 align-items-center ">
-            <a href="ecommerce-index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <header
+            class="d-flex flex-wrap justify-content-evenly justify-content-sm-between py-3 mb-4 align-items-center ">
+            <a href="ecommerce-index.html"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                 <span class="fs-4 tittle">BOUTIQUE</span>
             </a>
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="ecommerce-index.html" class="nav-link item">HOME</a></li>
                 <li class="nav-item"><a href="#" class="nav-link item item-shop">SHOP</a></li>
-                <li class="nav-item"><a href="#" class="nav-link item"><select class="item-dropdown" name="" id="" value=""><option value="">DEMOS | ▼</option></select></a></li>
-                <li class="nav-item"><a href="#" class="nav-link item"><select class="item-dropdown" name="" id=""><option value="">BLOCKS | ▼</option></select></a></li>
+                <li class="nav-item"><a href="#" class="nav-link item"><select class="item-dropdown" name="" id=""
+                            value="">
+                            <option value="">DEMOS | ▼</option>
+                        </select></a></li>
+                <li class="nav-item"><a href="#" class="nav-link item"><select class="item-dropdown" name="" id="">
+                            <option value="">BLOCKS | ▼</option>
+                        </select></a></li>
                 <li class="nav-item"><a href="#" class="nav-link item">COMPONENTS</a></li>
                 <li class="nav-item"><a href="#" class="nav-link item">CONTACT US</a></li>
                 <li class="nav-item"><a href="#" class="nav-link item">MY CART</a></li>
@@ -34,27 +46,28 @@
     <!-- Pay modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">PAY PRODUCTS</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">PAY PRODUCTS</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-pay">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-primary">PAY</button>
+                </div>
             </div>
-            <div class="modal-body" id="modal-pay">
-                
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-              <button type="button" class="btn btn-primary">PAY</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <!-- Main -->
     <main class="container">
         <div class="row">
             <div class="col-3">
                 <ol class="breadcrumb mt-2">
-                    <li class="breadcrumb-item "><a class="breadcrumb-home me-3" href="ecommerce-index.html">PRODUCTS</a></li>
+                    <li class="breadcrumb-item "><a class="breadcrumb-home me-3"
+                            href="ecommerce-index.html">PRODUCTS</a></li>
                     <li><span class="breadcrumb-arrow me-3"> ➜ </span></li>
                     <li class="breadcrumb-item active breadcrumb-product" aria-current="page">My Cart</li>
                 </ol>
@@ -65,29 +78,32 @@
                     <section class="text-center mb-3">
                         <p class="h1 cart-tittle">MY CART</p>
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                              </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="76" height="76" fill="currentColor"
+                                class="bi bi-cart3" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+                            </svg>
                         </span>
                     </section>
                     <!-- Products list -->
                     <section class="border-top">
                         <table class="table table-bordered text-center ">
                             <thead>
-                              <tr class="table-secondary ">
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">Eliminar</th>
-                              </tr>
+                                <tr class="table-secondary ">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Eliminar</th>
+                                </tr>
                             </thead>
                             <tbody id="table-body">
                                 <!-- Products content -->
                             </tbody>
                         </table>
                         <div class="text-end">
-                            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-lg btn-primary btn-pay w-25" id="btn-pay">PAY</button>
+                            <button data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                class="btn btn-lg btn-primary btn-pay w-25" id="btn-pay">PAY</button>
                         </div>
                     </section>
                 </div>
@@ -99,4 +115,5 @@
     <!-- My script -->
     <script src="scripts/scriptCart.js"></script>
 </body>
+
 </html>
