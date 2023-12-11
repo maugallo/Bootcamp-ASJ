@@ -17,7 +17,7 @@ let clickedColor = "";
 // Al inicializarse por primera vez
 colors = generateRandomColors(cuadrados.length);
 pickedColor = pickColor();
-colorDisplay.textContent = pickedColor;
+colorDisplay.textContent = pickedColor.toUpperCase();
 
 // Evento para jugar
 
