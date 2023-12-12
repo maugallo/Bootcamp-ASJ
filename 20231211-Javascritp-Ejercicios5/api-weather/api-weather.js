@@ -16,7 +16,7 @@ function cargarCiudad(ciudad) {
     .then((json) => {
         spanCiudad.textContent = json.name;
         spanTemp.textContent = kelvinToCelcius(json.main.feels_like);
-        spanGrados.innerHTML = "<sup>C°</sup>";
+        spanGrados.innerHTML = "<sup>°C</sup>";
         spanDescripcion.textContent = json.weather[0].description;
         establecerIcon(json.weather[0].description);
         console.log(json);
