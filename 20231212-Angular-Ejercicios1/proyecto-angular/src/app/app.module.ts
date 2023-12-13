@@ -4,13 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SecundarioComponent } from './components/secundario/secundario.component';
-import { ListaComponent } from './components/lista/lista.component';
+import { NumeroRandomComponent } from './components/numero-random/numero-random.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { FeaturesComponent } from './components/features/features.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SecundarioComponent,
-    ListaComponent
+    NumeroRandomComponent,
+    HeaderComponent,
+    FooterComponent,
+    HeroComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,
