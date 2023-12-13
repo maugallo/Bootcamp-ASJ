@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './features.component.css'
 })
 export class FeaturesComponent {
-  array = ["A", "B", "C", "D", "E", "F"];
+  array = ["Característica A", "Característica B", "Característica C", "Característica D", "Característica E", "Característica F"];
 }

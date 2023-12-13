@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {
+  flag = true;
 
+  botonPerro(){
+    this.flag = true;
+  }
+
+  botonGato(){
+    this.flag = false;
+  }
 }

@@ -1,8 +1,10 @@
 <div class="container col-xxl-10 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-        <div class="col-10 col-sm-8 col-lg-6">
-            <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yNl9waG90b19vZl9hX3BvcnRyYWl0X29mX2N1dGVzdF9wdXBweWV5ZXNfc21pbF84MGJjODAzYy1hODAzLTRlODMtOThmMC0yOWI1NjkwMDc4Y2ZfMS5qcGc.jpg" class="d-block mx-lg-auto img-fluid img-dog" alt="Bootstrap Themes" width="700"
+        <div class="col-12 col-lg-6 ">
+            <img *ngIf="flag === true" src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yNl9waG90b19vZl9hX3BvcnRyYWl0X29mX2N1dGVzdF9wdXBweWV5ZXNfc21pbF84MGJjODAzYy1hODAzLTRlODMtOThmMC0yOWI1NjkwMDc4Y2ZfMS5qcGc.jpg" class="d-block mx-lg-auto img-fluid img-dog" alt="Dog Picture" width="700" style="height: 25rem;"
                 height="500" loading="lazy">
+            <img *ngIf="flag === false" src="https://files.oaiusercontent.com/file-xDWLUo9u2Mx1RdYo6297TBKZ?se=2023-12-13T14%3A16%3A23Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Db7b79cf2-b0d4-4fce-9040-90541389f396.webp&sig=ON7eG%2BQY%2BBQYnL07j3lV4oJeSeXN2Y47xtRI38oQv4E%3D" class="d-block mx-lg-auto img-fluid img-dog" alt="Cat Picture" width="700" style="height: 25rem;"
+            height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Proyecto Angular de prueba</h1>
@@ -10,8 +12,8 @@
                 popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system,
                 extensive prebuilt components, and powerful JavaScript plugins.</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Comprar</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Descubrir</button>
+                <button type="button" class="btn btn-outline-warning btn-lg px-4 me-md-2" (click)="botonPerro()">Team Perros</button>
+                <button type="button" class="btn btn-outline-warning btn-lg px-4" (click)="botonGato()">Team Gatos</button>
             </div>
         </div>
     </div>
