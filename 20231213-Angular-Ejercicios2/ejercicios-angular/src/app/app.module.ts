@@ -11,6 +11,7 @@ import { SidebarComponent } from './components/main/sidebar/sidebar.component';
 import { ProyectTodolistComponent } from './components/main/proyect-todolist/proyect-todolist.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProyectSimpsonsComponent } from './components/main/proyect-simpsons/proyect-simpsons.component';
+import { HomeComponent } from './components/main/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProyectSimpsonsComponent } from './components/main/proyect-simpsons/pro
     SidebarComponent,
     ProyectTodolistComponent,
     FooterComponent,
-    ProyectSimpsonsComponent
+    ProyectSimpsonsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
