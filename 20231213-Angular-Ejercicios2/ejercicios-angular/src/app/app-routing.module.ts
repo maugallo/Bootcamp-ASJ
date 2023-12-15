@@ -6,7 +6,7 @@ import { ProyectSimpsonsComponent } from './components/main/proyect-simpsons/pro
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: '', component: HomeComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'proyects/to-do-list', component: ProyectTodolistComponent},
   { path: 'proyects/simpsons', component: ProyectSimpsonsComponent},
 ];
