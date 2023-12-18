@@ -12,6 +12,9 @@ import { ProyectTodolistComponent } from './components/main/proyect-todolist/pro
 import { FooterComponent } from './components/footer/footer.component';
 import { ProyectSimpsonsComponent } from './components/main/proyect-simpsons/proyect-simpsons.component';
 import { HomeComponent } from './components/main/home/home.component';
+import { ProyectRickandmortyComponent } from './components/main/proyect-rickandmorty/proyect-rickandmorty.component';
+import { CharacterComponent } from './components/main/proyect-rickandmorty/character/character.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { HomeComponent } from './components/main/home/home.component';
     ProyectTodolistComponent,
     FooterComponent,
     ProyectSimpsonsComponent,
-    HomeComponent
+    HomeComponent,
+    ProyectRickandmortyComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
