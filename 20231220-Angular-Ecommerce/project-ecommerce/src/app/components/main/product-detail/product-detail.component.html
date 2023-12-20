@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6">
+        <div *ngIf="product != null" id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-inner">
+              <div *ngFor="let image of product.images" class="carousel-item active">
+                <img src={{image}} alt={{product.title}} width="50vw" class="d-block w-100" (error)="changeImage($event)">
+              </div>
+            </div>
+            <div *ngIf="product.images.length >= 2">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 ps-5 mt-2">
+        <a class="h1  bg-primary text-wrap text-white rounded-1 p-2 text-decoration-none " [routerLink]="['../../../category/',product.category.name, product.category.id]">{{product.category.name}}</a>
+        <p class="h2 mt-5">{{product.title}}</p>
+        <p class="h5 mt-5 text-body-tertiary ">{{product.description}}</p>
+        <p class="h4 mt-5">${{product.price}}</p>
+    
+        <button class="btn btn-success mt-5" (click)="addToCart()">Comprar</button>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+.card-product{
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-product:hover{
+    transform: scale(1.01);
+    background-color: #eaeaea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.imgContainer{
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.imgCard{
+    width: 100%;
+    height: 50vh;
+    object-fit:cover
+}

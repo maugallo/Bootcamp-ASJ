@@ -1,0 +1,23 @@
+<table *ngIf="!isCartEmpty()" class="table">
+  <thead>
+    <tr>
+      <th class="imgColumn" scope="col">Imagen</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products" class="col">
+      <td><img src="{{product.images[0]}}" (error)="changeImage($event)" class="card-img-top" alt={{product.title}}></td>
+      <td>{{product.title}}</td>
+      <td>${{product.price}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">Total: </td>
+      <td>${{total}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 *ngIf="isCartEmpty()" class="alert alert-warning  text-center " >¡El carrito está vacío!</h3>
+<button class="btn btn-success mt-3 mb-4 "*ngIf="!isCartEmpty()" (click)="buyCart()">Comprar</button>
