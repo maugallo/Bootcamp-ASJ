@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   constructor(public userService: UserService) { }
 
   usuarios: any[] = [];
+  
 
   ngOnInit(): void {
     this.listUsers();
