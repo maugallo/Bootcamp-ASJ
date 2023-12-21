@@ -51,6 +51,5 @@ export class EcommerceServiceService {
   public buyCart(){
     localStorage.removeItem("cart");
   }
-
   
 }
