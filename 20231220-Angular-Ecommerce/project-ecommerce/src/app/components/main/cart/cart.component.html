@@ -19,5 +19,5 @@
   </tbody>
 </table>
 
-<h3 *ngIf="isCartEmpty()" class="alert alert-warning  text-center " >¡El carrito está vacío!</h3>
+<h3 *ngIf="isCartEmpty()" class="alert alert-info text-center " >El carrito está vacío</h3>
 <button class="btn btn-success mt-3 mb-4 "*ngIf="!isCartEmpty()" (click)="buyCart()">Comprar</button>

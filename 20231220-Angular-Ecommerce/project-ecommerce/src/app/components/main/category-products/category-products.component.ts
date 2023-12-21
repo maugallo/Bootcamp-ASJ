@@ -11,16 +11,19 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoryProductsComponent implements OnInit {
   products: Product[] = [];
   idCategory!: number;
+  nameCategory!: string;
+  noProducts: boolean = false;
 
   constructor(public apiService: EcommerceServiceService, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: any) => {
       this.idCategory = param.get("idCategory")!;
+      this.nameCategory = param.get("nameCategory")!;
       this.apiService.getProductsByCategory(this.idCategory).subscribe((data) =>{
         this.products = data;
-        console.log("Esta es la data");
-        console.log(data);
+        //Validar si existen o no productos.
+        this.noProducts = this.products.length === 0;
       });
     });
   }

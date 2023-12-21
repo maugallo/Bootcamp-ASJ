@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EcommerceServiceService } from '../../../services/ecommerce-service.service';
 import { Product } from '../../../models/products';
+import { ActivatedRoute, Router } from '@angular/router';
+import { max } from 'rxjs';
 
 @Component({
   selector: 'app-all-products',
@@ -10,18 +12,44 @@ import { Product } from '../../../models/products';
 export class AllProductsComponent implements OnInit {
 
   products: Product[] = [];
-  allProducts: Product[] = [];
-  filterName: string = "";
-  filterMinPrice!: number | undefined;
-  filterMaxPrice!: number | undefined;
+  minPrice!: number;
+  maxPrice!: number;
+  title!: string;
+  filterText: string = "";
+  noProducts: boolean = false;
 
-  constructor(public apiService: EcommerceServiceService){}
+  constructor(public apiService: EcommerceServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.apiService.getProducts().subscribe((data) =>{
-      this.products = data;
-      this.allProducts = data;
-    });
+    this.route.paramMap.subscribe((params: any) => {
+      this.minPrice = params.get('min')!;
+      this.maxPrice = params.get('max')!;
+      this.title = params.get('title')!;
+      if (this.title !== null) {
+        this.apiService.filterByTitle(this.title).subscribe((data) => {
+          this.products = data;
+          this.filterText = ` > ${this.title}`;
+          //Validar si existen o no productos.
+          this.noProducts = this.products.length === 0;
+        }
+        )
+      } else if (this.minPrice != null && this.maxPrice != null) {
+        this.apiService.filterByPrice(this.minPrice, this.maxPrice).subscribe((data) => {
+            this.products = data;
+            this.filterText = ` > de $${this.minPrice} a $${this.maxPrice}`
+            //Validar si existen o no productos.
+            this.noProducts = this.products.length === 0;
+          }
+        )
+      } else {
+        this.apiService.getProducts().subscribe((data) => {
+            this.products = data;
+            //Validar si existen o no productos.
+            this.noProducts = this.products.length === 0;
+          }
+        )
+      }
+    })
   }
 
   changeImage(event: Event): void {
@@ -29,6 +57,7 @@ export class AllProductsComponent implements OnInit {
     imagen.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png';
   }
 
+  /*
   clear(){
     this.filterName = "";
     this.filterMinPrice = undefined;
@@ -59,4 +88,5 @@ export class AllProductsComponent implements OnInit {
       return false;
     }
   }
+  */
 }

@@ -13,6 +13,7 @@ import { CategoryProductsComponent } from './components/main/category-products/c
 import { CartComponent } from './components/main/cart/cart.component';
 import { EcommerceServiceService } from './services/ecommerce-service.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AsideComponent } from './components/main/aside/aside.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AllProductsComponent,
     ProductDetailComponent,
     CategoryProductsComponent,
-    CartComponent
+    CartComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,

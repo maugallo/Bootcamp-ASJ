@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 ps-5 mt-2">
+    <div *ngIf="product != null" class="col-md-6 ps-5 mt-2">
         <a class="h1  bg-primary text-wrap text-white rounded-1 p-2 text-decoration-none " [routerLink]="['../../../category/',product.category.name, product.category.id]">{{product.category.name}}</a>
         <p class="h2 mt-5">{{product.title}}</p>
         <p class="h5 mt-5 text-body-tertiary ">{{product.description}}</p>

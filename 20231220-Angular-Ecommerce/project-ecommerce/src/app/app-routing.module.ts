@@ -6,9 +6,14 @@ import { CategoryProductsComponent } from './components/main/category-products/c
 import { ProductDetailComponent } from './components/main/product-detail/product-detail.component';
 
 const routes: Routes = [
-  { path: '', component: AllProductsComponent},
+  { path:'', component: AllProductsComponent},
+  { path:'filter',
+    children: [
+      { path: 'price_range/:min/:max', component: AllProductsComponent },
+      { path: 'title/:title', component: AllProductsComponent}
+    ]},
   { path: 'cart', component: CartComponent},
-  { path: 'category/:categoria/:idCategory', component: CategoryProductsComponent},
+  { path: 'category/:nameCategory/:idCategory', component: CategoryProductsComponent},
   { path: 'detail/:nameProduct/:idProduct', component: ProductDetailComponent},
 ]
 

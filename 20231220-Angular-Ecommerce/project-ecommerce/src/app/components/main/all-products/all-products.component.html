@@ -1,42 +1,25 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <h3 class="text-center ">Filtros</h3>
-            <div class="mt-3">
-                <label for="txtName" class="form-label">Nombre</label>
-                <input [(ngModel)]="filterName" id="txtName" type="text" class="form-control" placeholder="Ingrese el nombre">
-            </div>
-            <div class="mt-3">
-                <label for="txtNumber" class="form-label">Precios</label>
-                <div class="d-flex">
-                    <input type="number" [(ngModel)]="filterMinPrice" id="txtNumber" class="form-control me-2" min="0" placeholder="$0">
-                    <input type="number" [(ngModel)]="filterMaxPrice" class="form-control" min="1" placeholder="$10000">
-                </div>
-            </div>
-            <div class="mt-3 text-end">
-                <button class="btn btn-dark mb-2 me-2" (click)="clear()">Limpiar</button>
-                <button class="btn btn-dark mb-2" (click)="filter()">Filtrar</button>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div *ngFor="let product of products" class="col">
-                    <div [routerLink]="['detail/', product.title, product.id]" class="card shadow-sm card-product">
-                        <div class="bd-placeholder-img card-img-top imgContainer">
-                            <img class="imgCard" src={{product.images[0]}}
-                            alt={{product.title}} default="miimagen.png" (error)="changeImage($event)">
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{product.title}}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-body-secondary">${{product.price}}</small>
-                            </div>
+<div class="row">
+    <div class="col-md-2">
+        <app-aside></app-aside>
+    </div>
+    <div class="col-md-10">
+        <p>Mostrando todos los productos {{filterText}}</p>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div *ngFor="let product of products" class="col">
+                <div [routerLink]="['/detail/', product.title, product.id]" class="card shadow-sm card-product">
+                    <div class="bd-placeholder-img card-img-top imgContainer">
+                        <img class="imgCard" src={{product.images[0]}} alt={{product.title}} default="miimagen.png"
+                            (error)="changeImage($event)">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{product.title}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-body-secondary">${{product.price}}</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <h3 *ngIf="noProducts" class="alert alert-success text-center " >No se encontraron productos</h3>
     </div>
-    
-    
 </div>
