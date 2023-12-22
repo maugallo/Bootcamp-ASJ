@@ -29,7 +29,7 @@ export class EcommerceServiceService{
   //Métodos del carrito:
   public updateCartCount(){
     let cart: number[] = this.getProductsOfCart();
-    this.behaviourSubject.next(cart.length); //El behaviourSubject avisa a quienes están suscritos que cambió el valor que está observando.
+    this.behaviourSubject.next(cart.length); //El behaviourSubject avisa con next() a quienes están suscritos que cambió el valor que está observando.
   }
 
   public getCartCount(){
@@ -61,6 +61,10 @@ export class EcommerceServiceService{
   }
 
   //Métodos para filtrar:
+  public filter(urlText: string):Observable<any>{
+    return this.http.get(this.URL_API + 'products/?' + urlText);
+  }
+
   public filterByTitle(title: string):Observable<any>{
     return this.http.get(this.URL_API + 'products/?title=' + title);
   }

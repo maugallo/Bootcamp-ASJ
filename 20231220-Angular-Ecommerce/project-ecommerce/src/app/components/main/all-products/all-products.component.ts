@@ -30,51 +30,37 @@ export class AllProductsComponent implements OnInit {
   constructor(public apiService: EcommerceServiceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: any) => {
-      this.title = params.get('title')!;
-      this.price = params.get('price')!;
-      this.minPrice = params.get('min')!;
-      this.maxPrice = params.get('max')!;
-      this.categoryId = params.get('idCategory')!;
-      this.categoryName = params.get('nameCategory')!;
+    this.route.queryParamMap.subscribe((params: any) => {
+      const title = params.get('title');
+      const priceMin = params.get('price_min');
+      const priceMax = params.get('price_max');
+      const categoryId = params.get('categoryId');
 
-      //Verificar si hay algún valor en los filtros (por ahora por separado):
-      if (this.title != null) {
-        this.apiService.filterByTitle(this.title).subscribe((data) => {
-          this.products = data;
-          //Método para avisar si hay o no productos:
-          this.noProducts = this.areProductsAvailable();
+      let urlText = '';
 
-          this.filterText = "Producto > " + this.title;
-        });
-      } else if (this.price != null) {
-        this.apiService.filterByPrice(this.price).subscribe((data) => {
+      if (title) {
+        urlText += `title=${title}&`;
+      }
+      if (priceMin) {
+        urlText += `price_min=${priceMin}&`;
+      }
+      if (priceMax) {
+        urlText += `price_max=${priceMax}&`;
+      }
+      if (categoryId) {
+        urlText += `categoryId=${categoryId}&`;
+      }
+
+      // Remover el último '&' si existe
+      urlText = urlText.endsWith('&') ? urlText.slice(0, -1) : urlText;
+      
+      if (urlText != '') {
+        this.apiService.filter(urlText).subscribe((data) => {
           this.products = data;
-          //Método para avisar si hay o no productos:
-          this.noProducts = this.areProductsAvailable();
-          this.filterText = "Productos > $" + this.price;
         });
-      } else if (this.minPrice != null && this.maxPrice != null) {
-        this.apiService.filterByPriceRange(this.minPrice, this.maxPrice).subscribe((data) => {
-          this.products = data;
-          //Método para avisar si hay o no productos:
-          this.noProducts = this.areProductsAvailable();
-          this.filterText = "Productos > Entre $" + this.minPrice + " y $" + this.maxPrice;
-        });
-      } else if (this.categoryId) {
-        this.apiService.filterByCategory(this.categoryId).subscribe((data) => {
-          this.products = data;
-          //Método para avisar si hay o no productos:
-          this.noProducts = this.areProductsAvailable();
-          this.filterText = "Categoría > " + this.categoryName;
-        });
-      } else {
-        //Si ningún valor de los filtros se recibió, se muestran todos:
+      } else{
         this.apiService.getAllProducts().subscribe((data) => {
           this.products = data;
-          this.filterText = "Mostrando todos los productos";
-          //Método para avisar si hay o no productos:
-          this.noProducts = this.areProductsAvailable();
         });
       }
     });

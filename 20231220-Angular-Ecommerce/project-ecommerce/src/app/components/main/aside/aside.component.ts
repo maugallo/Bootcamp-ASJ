@@ -11,40 +11,34 @@ declare var bootstrap: any;
   styleUrl: './aside.component.css'
 })
 export class AsideComponent implements OnInit {
-  name!: string;
+
+  //Input de filtros:
+  activeCategory: number= -1;
+  name!: string | null;
+  price!: number | undefined;
   minPrice!: number | undefined;
   maxPrice!: number | undefined;
-  price!: number | undefined;
-  msgError: string = "";
   categories:Category[] = [];
-  activeCategory!: Category;
+
+  //Texto que concatenará varios filtros (o uno):
+  filterText: string = ""
+  msgError: string = "";
 
   constructor(public apiService: EcommerceServiceService, private route: Router) { }
 
   ngOnInit(): void {
-      this.apiService.getCategories().subscribe((data) => {
-        this.categories = data;
-      })
+      this.loadSelectCategories(); //Cargar las categories en el select.
   }
 
   filter() {
-    if (this.name != null && this.name != "") {
-      this.route.navigate([`/filter/title/${this.name}`]);
-    } else if (this.price != undefined) {
-      if (this.price < 0) {
-        this.msgError = "El precio debe ser mayor a 0";
-        this.mostrarToast();
-      }
-      this.route.navigate([`/filter/price/${this.price}`]);
-    } else if (this.validatePrices()) {
-      this.route.navigate([`/filter/price_range/${this.minPrice}/${this.maxPrice}`]);
-    } else{
-      this.mostrarToast();
-    }
+
+    this.route.navigate(['filter'],
+      { queryParams: {title: this.name, price_min: this.minPrice, price_max: this.maxPrice, categoryId: (this.activeCategory == -1) ? null : this.activeCategory}}
+      ); // ---> /filter/?title=this.name?price_min=this.minPrice?price_max=this.maxPrice?categoryId=this.activeCategory
   }
 
   clear() {
-    this.name = "";
+    this.name = null;
     this.minPrice = undefined;
     this.maxPrice = undefined;
     this.price = undefined;
@@ -72,5 +66,11 @@ export class AsideComponent implements OnInit {
     }
 
     return rta;
+  }
+
+  loadSelectCategories(){
+    this.apiService.getCategories().subscribe((data) => {
+      this.categories = data;
+    })
   }
 }
