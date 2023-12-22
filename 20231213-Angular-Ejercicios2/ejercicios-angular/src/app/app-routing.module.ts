@@ -5,11 +5,13 @@ import { ProyectTodolistComponent } from './components/main/proyect-todolist/pro
 import { ProyectSimpsonsComponent } from './components/main/proyect-simpsons/proyect-simpsons.component';
 import { ProyectRickandmortyComponent } from './components/main/proyect-rickandmorty/proyect-rickandmorty.component';
 import { CharacterComponent } from './components/main/proyect-rickandmorty/character/character.component';
+import { ProyectPipeComponent } from './components/main/proyect-pipe/proyect-pipe.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'proyects/to-do-list', component: ProyectTodolistComponent},
   { path: 'proyects/simpsons', component: ProyectSimpsonsComponent},
+  { path: 'proyects/primos-pipe', component: ProyectPipeComponent},
   { path: 'proyects/rick-and-morty',
   children:[
     { path: '', component: ProyectRickandmortyComponent},

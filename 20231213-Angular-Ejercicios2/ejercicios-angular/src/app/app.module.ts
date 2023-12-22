@@ -15,6 +15,8 @@ import { HomeComponent } from './components/main/home/home.component';
 import { ProyectRickandmortyComponent } from './components/main/proyect-rickandmorty/proyect-rickandmorty.component';
 import { CharacterComponent } from './components/main/proyect-rickandmorty/character/character.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NumerosPrimosPipe } from './pipes/numeros-primos.pipe';
+import { ProyectPipeComponent } from './components/main/proyect-pipe/proyect-pipe.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProyectSimpsonsComponent,
     HomeComponent,
     ProyectRickandmortyComponent,
-    CharacterComponent
+    CharacterComponent,
+    NumerosPrimosPipe,
+    ProyectPipeComponent
   ],
   imports: [
     BrowserModule,
