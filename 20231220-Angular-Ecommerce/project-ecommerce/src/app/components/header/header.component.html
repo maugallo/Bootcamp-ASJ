@@ -1,14 +1,16 @@
 <div class="container">
     <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-4">Ecommerce</span>
+            <span class="fs-2 fw-semibold ">Ecommerce</span>
         </a>
 
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a class="nav-link" routerLink="" [ngClass]="activeAll() ? 'active' : ''">Todos</a></li>
-            <li class="nav-item" *ngFor="let category of categories"> <a class="nav-link " [ngClass]="activeCategory(category.name, category.id) ? 'active' : ''"
-                    [routerLink]="['category/',category.name, category.id]">{{category.name}}</a></li>
-            <li class="nav-item "><a class="nav-link " routerLink="cart">Cart</a></li>
-        </ul>
+        <a class="position-relative text-success" routerLink="cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart-fill cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+              </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{countCart}}
+            </span>
+        </a>
     </div>
 </div>

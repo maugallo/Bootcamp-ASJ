@@ -9,7 +9,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { AllProductsComponent } from './components/main/all-products/all-products.component';
 import { ProductDetailComponent } from './components/main/product-detail/product-detail.component';
-import { CategoryProductsComponent } from './components/main/category-products/category-products.component';
 import { CartComponent } from './components/main/cart/cart.component';
 import { EcommerceServiceService } from './services/ecommerce-service.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +21,6 @@ import { AsideComponent } from './components/main/aside/aside.component';
     MainComponent,
     AllProductsComponent,
     ProductDetailComponent,
-    CategoryProductsComponent,
     CartComponent,
     AsideComponent
   ],

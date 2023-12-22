@@ -1,25 +1,19 @@
-<div class="row">
-    <div class="col-md-2">
-        <app-aside></app-aside>
-    </div>
-    <div class="col-md-10">
-        <p>Mostrando todos los productos {{filterText}}</p>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div *ngFor="let product of products" class="col">
-                <div [routerLink]="['/detail/', product.title, product.id]" class="card shadow-sm card-product">
-                    <div class="bd-placeholder-img card-img-top imgContainer">
-                        <img class="imgCard" src={{product.images[0]}} alt={{product.title}} default="miimagen.png"
-                            (error)="changeImage($event)">
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{product.title}}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-body-secondary">${{product.price}}</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<p class="h5">{{filterText}}</p>
+<h3 *ngIf="noProducts" class="alert alert-info text-center">
+  No se encontraron productos
+</h3>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-3">
+  <div *ngFor="let product of products" class="col">
+    <div [routerLink]="['/detail/', product.title, product.id]" class="card shadow-sm card-product">
+      <div class="bd-placeholder-img card-img-top imgContainer">
+        <img class="imgCard" src="{{ product.images[0] }}" alt="{{ product.title }}" (error)="changeImage($event)" />
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ product.title }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <small class="text-body-secondary">${{ product.price }}</small>
         </div>
-        <h3 *ngIf="noProducts" class="alert alert-success text-center " >No se encontraron productos</h3>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,41 +1,39 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, pipe, map, min } from 'rxjs';
-import { Product } from '../models/products';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EcommerceServiceService {
+export class EcommerceServiceService{
 
-  private URL_API = "https://api.escuelajs.co/api/v1/";
-  private products!: Observable<Product[]>;
+  private URL_API = 'https://api.escuelajs.co/api/v1/';
+  private behaviourSubject = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http:HttpClient) { }
 
-  public getCategories(): Observable<any>{
+  //Métodos para obtener productos:
+  public getAllProducts():Observable<any>{
+    return this.http.get(this.URL_API + 'products');
+  }
+
+  public getProduct(id: number):Observable<any>{
+    return this.http.get(this.URL_API + 'products/'+id);
+  }
+
+  //Métodos para obtener todas las categorías:
+  public getCategories():Observable<any>{
     return this.http.get(this.URL_API + "categories");
   }
 
-  public getProducts():Observable<any>{
-    this.products = this.http.get<any>(this.URL_API + "products");
-    return this.products;
-  }
-
-  public getProductsByCategory(id: number):Observable<any>{
-    return this.http.get<any>(this.URL_API + "products/?categoryId=" + id);
-  }
-
-  public getProduct(id: number): Observable<any>{
-    return this.http.get(this.URL_API + "products/" + id);
-  }
-
-  public addProductToCart(id: number){
+  //Métodos del carrito:
+  public updateCartCount(){
     let cart: number[] = this.getProductsOfCart();
+    this.behaviourSubject.next(cart.length); //El behaviourSubject avisa a quienes están suscritos que cambió el valor que está observando.
+  }
 
-    cart.push(id);
-
-    localStorage.setItem("cart", JSON.stringify(cart));
+  public getCartCount(){
+    return this.behaviourSubject.asObservable(); //El behaviourSubject se transforma en objeto Observable así los componentes pueden suscribirse a él.
   }
 
   public getProductsOfCart(){
@@ -47,19 +45,35 @@ export class EcommerceServiceService {
     }else{
       cart = JSON.parse(data);
     }
-
     return cart;
   }
 
-  public buyCart(){
+  public addProductToCart(id: number){
+    let cart: number[] = this.getProductsOfCart();
+
+    cart.push(id);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  public clearCart(){
     localStorage.removeItem("cart");
   }
 
-  public filterByPrice(priceMin: number, priceMax: number):Observable<any>{
-    return this.http.get(this.URL_API + 'products/?price_min=' + priceMin + '&price_max=' + priceMax);
-  }
-
+  //Métodos para filtrar:
   public filterByTitle(title: string):Observable<any>{
     return this.http.get(this.URL_API + 'products/?title=' + title);
+  }
+
+  public filterByPrice(price: number):Observable<any>{
+    return this.http.get(this.URL_API + 'products/?price=' + price);
+  }
+
+  public filterByPriceRange(priceMin: number, priceMax: number):Observable<any>{
+    return this.http.get(this.URL_API + 'products/?price_min=' + priceMin+'&price_max=' + priceMax);
+  }
+
+  public filterByCategory(idCategory: number):Observable<any>{
+    return this.http.get(this.URL_API + 'products/?categoryId=' + idCategory);
   }
 }

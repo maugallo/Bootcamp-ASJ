@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
 
   products: Product[] = [];
-  total:number=0;
+  total: number = 0;
 
 
   constructor(public apiService: EcommerceServiceService, private router: Router){}
@@ -25,24 +25,18 @@ export class CartComponent implements OnInit {
     for (let id of cart){
       this.apiService.getProduct(id).subscribe((data) =>{
         this.products.push(data);
-        this.total+=data.price;
+        this.total += data.price;
       });
     }
   }
 
-  changeImage(event: Event): void {
-    const imagen = event.target as HTMLImageElement;
-    imagen.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png';
-  }
-
   buyCart(){
-    //llamar al servicio para comprar carrito
-    this.apiService.buyCart();
+    this.apiService.clearCart();
 
-    //alert que se compro el carrito
+    this.apiService.updateCartCount();
+
     alert("¡Gracias por tu compra!");
 
-    //redirigir a pagina principal
     this.router.navigate([""]);
   }
 
@@ -52,5 +46,10 @@ export class CartComponent implements OnInit {
     } else{
       return false;
     }
+  }
+
+  changeImage(event: Event): void {
+    const imagen = event.target as HTMLImageElement;
+    imagen.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png';
   }
 }

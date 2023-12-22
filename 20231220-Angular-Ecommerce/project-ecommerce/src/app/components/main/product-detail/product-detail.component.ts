@@ -15,7 +15,6 @@ export class ProductDetailComponent implements OnInit {
   constructor(public apiService: EcommerceServiceService, private route:ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
-    console.log("Este es el on init!!");
     this.route.paramMap.subscribe((params: any) =>{
       this.idProduct = params.get('idProduct')!;
       this.apiService.getProduct(this.idProduct).subscribe(
@@ -32,7 +31,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(){
-    this.apiService.addProductToCart(this.idProduct);
+    this.apiService.addProductToCart(this.idProduct); //Agregamos un producto al localStorage del carrito.
+
+    this.apiService.updateCartCount(); //Actualizamos la cantidad de productos en el carrito que el BehaviourSubject leerá, pasando por parámetro la cantidad de carritos contados.
 
     alert(`${this.product.title} agregado al carrito!`);
 

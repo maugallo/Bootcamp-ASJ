@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div class="row">
+    <div *ngIf="showAside()" class="col-md-2">
+        <app-aside></app-aside>
+    </div>
+    <div [ngClass]="showAside() ? 'col-md-10' : 'col-md-12'">
+        <router-outlet></router-outlet>
+    </div>
+</div>
