@@ -1,5 +1,5 @@
 <div class="row mb-4">
-  <p *ngIf="product != null" class="h5 mb-3">Mostrando productos de la categoría <a class="text-primary text-decoration-none fw-bold" [routerLink]="['/filter/category/',product.category.name, product.category.id]">{{product.category.name | titlecase}}</a></p>
+  <p *ngIf="product != null" class="h5 mb-3">Mostrando producto de la categoría <a class="text-primary text-decoration-none fw-bold" [routerLink]="['/filter']" [queryParams]="{ categoryId: product.category.id }">{{product.category.name | titlecase}}</a></p>
     <div class="col-md-6">
         <div *ngIf="product != null" id="carouselExampleIndicators" class="carousel slide">
             <div class="carousel-inner">

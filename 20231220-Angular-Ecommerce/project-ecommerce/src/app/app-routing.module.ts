@@ -7,13 +7,6 @@ import { ProductDetailComponent } from './components/main/product-detail/product
 const routes: Routes = [
   { path:'', component: AllProductsComponent},
   { path: 'filter', component: AllProductsComponent},
-  /* { path:'filter',
-    children: [
-      { path: 'title/:title', component: AllProductsComponent},
-      { path: 'price/:price', component: AllProductsComponent},
-      { path: 'price_range/:min/:max', component: AllProductsComponent },
-      { path: 'category/:nameCategory/:idCategory', component: AllProductsComponent },
-    ]}, */
   { path: 'cart', component: CartComponent},
   { path: 'detail/:nameProduct/:idProduct', component: ProductDetailComponent},
 ]

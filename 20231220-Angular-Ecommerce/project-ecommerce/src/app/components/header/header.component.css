@@ -1,3 +1,7 @@
 .cart:hover{
     color: #216e21;
 }
+
+.title:hover{
+    cursor: pointer;
+}

@@ -64,20 +64,4 @@ export class EcommerceServiceService{
   public filter(urlText: string):Observable<any>{
     return this.http.get(this.URL_API + 'products/?' + urlText);
   }
-
-  public filterByTitle(title: string):Observable<any>{
-    return this.http.get(this.URL_API + 'products/?title=' + title);
-  }
-
-  public filterByPrice(price: number):Observable<any>{
-    return this.http.get(this.URL_API + 'products/?price=' + price);
-  }
-
-  public filterByPriceRange(priceMin: number, priceMax: number):Observable<any>{
-    return this.http.get(this.URL_API + 'products/?price_min=' + priceMin+'&price_max=' + priceMax);
-  }
-
-  public filterByCategory(idCategory: number):Observable<any>{
-    return this.http.get(this.URL_API + 'products/?categoryId=' + idCategory);
-  }
 }
