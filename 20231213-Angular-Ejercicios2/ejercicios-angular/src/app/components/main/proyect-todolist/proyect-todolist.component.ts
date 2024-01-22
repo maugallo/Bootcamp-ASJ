@@ -1,77 +1,141 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Tarea } from '../../../models/tarea';
+import { TodolistService } from '../../../services/todolist.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-proyect-todolist',
   templateUrl: './proyect-todolist.component.html',
   styleUrl: './proyect-todolist.component.css'
 })
-export class ProyectTodolistComponent {
+export class ProyectTodolistComponent implements OnInit {
   
-  nombreTarea!: string;
-  codigoTarea: number = 1;
-  tarea!: Tarea;
+  inputTarea: string = "";
+  selectedCategory: string = "todas";
   fecha: Date = new Date();
 
-  arrayMostrar: Tarea[] = [];
-  arrayTodas: Tarea[] = [];
-  arrayEliminados: Tarea[] = [];
+  arrayTareas: Tarea[] = [];
+  tarea!: Tarea;
 
-  //El array de tareas y de su respectivo checkbox trabajan a la par.
+  constructor(public todoListService: TodolistService) { }
+
+  ngOnInit(): void {
+    this.cargarTareas();
+  }
+
+  cargarTareas(categoria = "todas"){
+    this.todoListService.getTasks().subscribe((data) => {
+      if (categoria !== "todas"){
+        this.arrayTareas = data.filter((tarea) => tarea.estado === categoria);
+      } else {
+        this.arrayTareas = data.filter((tarea) => tarea.estado !== "eliminada");
+      }
+    });
+  }
+
   agregarTarea(){
-    this.tarea = {nombre: this.nombreTarea, checkbox: false, codigo: this.codigoTarea};
-    this.codigoTarea++;
-    this.arrayTodas.push(this.tarea);
-    this.arrayMostrar = JSON.parse(JSON.stringify(this.arrayTodas));
-    this.nombreTarea = "";
-  }
-
-  //Si la casilla no esta marcada, se pasa a true para marcarla, y viceversa.
-  marcarCasilla(i: number){
-    if (this.arrayMostrar[i].checkbox === false){
-      this.arrayMostrar[i].checkbox = true;
-      this.arrayTodas.map((tarea) => { if (tarea.codigo === this.arrayMostrar[i].codigo) tarea.checkbox = true; })
-    } else{
-      this.arrayMostrar[i].checkbox = false;
-      this.arrayTodas.map((tarea) => { if (tarea.codigo === this.arrayMostrar[i].codigo) tarea.checkbox = false; })
+    this.tarea = {
+      id: 0,
+      nombre: this.inputTarea,
+      checked: false,
+      estado: "pendiente"
     }
+
+    this.inputTarea = "";
+
+    this.todoListService.createTask(this.tarea).subscribe((data) => {
+      if (data){
+        this.cargarTareas();
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "success",
+          title: "Tarea agregada correctamente!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      } else {
+        alert("Ocurrió un error al conectar con la API");
+      }
+    })
   }
 
-  eliminarTarea(i: number){
-    //Guardo en el array en eliminados:
-    this.arrayEliminados.push(this.arrayMostrar[i]);
-    //Busco el index del objeto dentro del array de todas las tareas, y una vez encontrado lo elimino.
-    let index = this.arrayTodas.findIndex((tarea) => {
-      if (tarea.codigo == this.arrayMostrar[i].codigo) { return true} else{ return false } 
-      });
-    this.arrayTodas.splice(index, 1);
-    //Elimino el objeto también del arrayMostrar.
-    this.arrayMostrar.splice(i, 1);
+  marcarCasilla(tarea: Tarea){
+    if (tarea.checked == false){
+      tarea.checked = true;
+      tarea.estado = "completada";
+    } else {
+      tarea.checked = false;
+      tarea.estado = "pendiente";
+    }
+
+    this.todoListService.updateTask(tarea).subscribe((data) => {
+      if (data){
+        this.cargarTareas(this.selectedCategory);
+      } else {
+        alert("Ocurrió un error al conectar con la API");
+      }
+    });
+
   }
 
-  filtrarLista(filtro: string){
-    this.arrayMostrar = [];
-    switch (filtro){
-      case "todas":
-        this.arrayMostrar = JSON.parse(JSON.stringify(this.arrayTodas));
-        break;
+  deshabilitarTarea(tarea: Tarea){
+    tarea.estado = "eliminada";
+    tarea.checked = false;
 
+    this.todoListService.disableTask(tarea).subscribe((data) => {
+      if (data){
+        this.cargarTareas(this.selectedCategory);
+      } else {
+        alert("Ocurrió un error al conectar con la API");
+      }
+    });
+  }
+
+  eliminarTarea(id: number){
+    Swal.fire({
+      title: "Estás seguro que deseas eliminar la tarea?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.todoListService.deleteTask(id).subscribe((data) => {
+          if (data){
+            this.cargarTareas(this.selectedCategory);
+          } else {
+            alert("Ocurrió un error al conectar con la API");
+          }
+        });
+      }
+    });
+    
+  }
+
+  filtrarLista(categoria: string){
+    switch (categoria) {
       case "pendientes":
-        this.arrayMostrar =  this.arrayTodas.filter(tarea => tarea.checkbox === false);
+        this.selectedCategory = "pendiente";
+        this.cargarTareas("pendiente");
         break;
-        
+
       case "completadas":
-        this.arrayMostrar = this.arrayTodas.filter(tarea => tarea.checkbox != false);
-      break;
+        this.selectedCategory = "completada";
+        this.cargarTareas("completada");
+        break;
 
       case "eliminadas":
-        this.arrayMostrar = JSON.parse(JSON.stringify(this.arrayEliminados));
-      break;
+        this.selectedCategory = "eliminada";
+        this.cargarTareas("eliminada");
+        break;
+    
+      default:
+        this.selectedCategory = "todas";
+        this.cargarTareas();
+        break;
     }
   }
-}
-
-export interface Tarea{
-  nombre: string;
-  checkbox: boolean;
-  codigo: number;
 }

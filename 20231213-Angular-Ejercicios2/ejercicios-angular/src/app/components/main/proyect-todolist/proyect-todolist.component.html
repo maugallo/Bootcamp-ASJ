@@ -1,14 +1,8 @@
 <div class="container mb-3">
     <section class="row p-3">
         <div class="col-12 offset-md-5 col-md-9 offset-lg-1 col-lg-11 text-center">
-            <h2 class="py-3 fs-1">TO-DO LIST <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52"
-                    fill="currentColor" class="bi bi-card-checklist ms-2" viewBox="0 0 16 16">
-                    <path
-                        d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
-                    <path
-                        d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0" />
-                </svg></h2>
-            <!-- Sección de filtros -->
+            <h2 class="py-3 fs-1">TO-DO LIST <i style="font-size: 1em;" class="bi bi-card-checklist"></i></h2>
+            <!-- Sección de categorías -->
             <div class="d-flex justify-content-center my-3">
                 <button class="btn btn-outline-dark  me-2 rounded-0" (click)="filtrarLista('todas')">Todas</button>
                 <button class="btn btn-outline-warning me-2 rounded-0" (click)="filtrarLista('pendientes')">Pendientes</button>
@@ -18,7 +12,7 @@
             <!-- Sección de input -->
             <div class="d-flex justify-content-center">
                 <div class="w-75">
-                    <input [(ngModel)]="nombreTarea" class="form-control rounded-0" type="text"
+                    <input [(ngModel)]="inputTarea" class="form-control rounded-0" type="text"
                         placeholder="Ingrese su tarea">
                 </div>
                 <div>
@@ -32,23 +26,30 @@
         <div class="col-12 offset-md-5 col-md-9 offset-lg-2 col-lg-9 offset-lg-1 text-center ">
             <ul class="list-unstyled list-group">
                 <!-- Tarea creada -->
-                <li *ngFor="let objTarea of arrayMostrar; index as i"
-                    [ngClass]="(objTarea.checkbox) ? 'text-decoration-line-through' : 'text-decoration-none'"
-                    class="rounded-0  list-group-item d-flex align-items-center  justify-content-between list-group-item-action">
+                <li *ngFor="let tarea of arrayTareas; index as i"
+                    [ngClass]="(tarea.checked) ? 'text-decoration-line-through' : 'text-decoration-none'"
+                    class="rounded-0  list-group-item d-flex align-items-center  justify-content-between list-group-item-action" >
                     <div class="d-flex flex-column text-start">
-                        <p class="m-0 fs-5">{{objTarea.nombre}} - {{objTarea.codigo}}</p>
+                        <p class="m-0 fs-5">#{{tarea.id}} {{tarea.nombre}}</p>
                         <p class="m-0 text-secondary">{{fecha | date: 'dd/MM/yyyy'}}</p>
                     </div>
                     <div class="d-flex justify-content-end">
                         <!-- Checkbox -->
-                        <input [(ngModel)]="objTarea.checkbox" class="form-check" type="checkbox" (click)="marcarCasilla(i)">
-                        <!-- Botón de eliminación -->
-                        <button [ngClass]="(objTarea.checkbox) ? '' : 'invisible'" (click)="eliminarTarea(i)"  class=" border-0 bg-white  ms-2 btn- text-decoration-none text-dark" href="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
-                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
-                            </svg>
-                        </button>
+                        <ng-container *ngIf="tarea.estado !== 'eliminada' ">
+                            <input [(ngModel)]="tarea.checked" class="form-check-input border-secondary-subtle " type="checkbox" (click)="marcarCasilla(tarea)">
+                        </ng-container>
+                        <!-- Botón de eliminado lógico -->
+                        <ng-container *ngIf="tarea.estado === 'completada' ">
+                            <button (click)="deshabilitarTarea(tarea)"  class=" border-0 bg-white  ms-2 btn- text-decoration-none text-dark" href="">
+                                <i style="font-size: 1.2em;" class="bi bi-trash"></i>
+                            </button>
+                        </ng-container>
+                        <!-- Botón de eliminado físico -->
+                        <ng-container *ngIf="tarea.estado === 'eliminada' ">
+                            <button (click)="eliminarTarea(tarea.id)"  class=" border-0 bg-white  ms-2 btn- text-decoration-none text-dark" href="">
+                                <i style="font-size: 1.2em;" class="bi bi-x-square"></i>
+                            </button>
+                        </ng-container>
                     </div>
                 </li>
             </ul>
