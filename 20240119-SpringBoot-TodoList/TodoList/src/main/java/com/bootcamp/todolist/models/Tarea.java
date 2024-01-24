@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity // Aclaro que será una entidad.
@@ -15,12 +16,14 @@ public class Tarea {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@NotNull(message = "El nombre no puede ser nulo")
+	@NotNull(message = "El nombre no puede ser nulo") //Validaciones (min, max, pattern, null, blank, etc)
+	@NotBlank(message = "El nombre no puede estar vacío")
 	private String nombre; // Cada uno de los atributos tienen internamente la notación @Column, por lo que
 							// los detectará como parte de la tabla.
-
+	
 	private Boolean checked;
-
+	
+	@NotBlank(message = "El estado no puede estar vacío")
 	private String estado;
 
 	public Tarea() {

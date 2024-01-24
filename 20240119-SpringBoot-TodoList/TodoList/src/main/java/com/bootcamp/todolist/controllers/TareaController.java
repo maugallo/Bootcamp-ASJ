@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.bootcamp.todolist.ErrorHandler;
 import com.bootcamp.todolist.models.Tarea;
 import com.bootcamp.todolist.services.TareaService;
 
@@ -45,7 +46,15 @@ public class TareaController {
 	@PostMapping()
 	public ResponseEntity<Boolean> createTarea(@Valid @RequestBody Tarea tarea, BindingResult bindingResult) {
 		
-		if (bindingResult.hasErrors()) return new ResponseEntity<Boolean>(false, HttpStatus.BAD_REQUEST);
+		//Pregunto si existen errores del tipo Modelo.
+		if (bindingResult.hasErrors()) {
+			List<String> errorList = ErrorHandler.showErrorMessage(bindingResult);
+			errorList.forEach((error) -> {
+				System.out.println(error);
+			});
+			
+			return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
+		}
 		
 		return new ResponseEntity<>(tareaService.createTarea(tarea), HttpStatus.OK);
 		//Es lo mismo que hacer ResponseEntity.ok(tareaService.createTarea(tarea)); Pero return new ResponseEntity<> es más completo en cuanto a métodos.
