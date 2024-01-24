@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web Alumnos</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+</head>
+
+<body class="container">
+
+	<h1 class="text-center">Web de Alumnos</h1>
+	
+	<!-- Tabla para ver todos los elementos -->
+	<div>
+		<button class="btn btn-success my-2" onclick="verModal()" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Alumno</button>
+	</div>
+	<table class="table" id="tabla-alumnos">
+		<thead>
+			<tr class="text-center">
+				<th scope="col">ID</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Promedio</th>
+				<th scope="col">Acciones</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+		</tbody>
+	</table>
+
+	<!-- Modal para ver elemento -->
+	<div class="modal fade" id="getModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-4" id="exampleModalLabel">Información de Alumno</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h4>Id: <span id="id-alumno"></span> </h4>
+					<h4>Nombre: <span id="nombre-alumno"></span> </h4>
+					<h4>Apellido: <span id="apellido-alumno"></span> </h4>
+					<h4>Promedio: <span id="promedio-alumno"></span> </h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal para crear/editar elemento -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+		tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="staticBackdropLabel"></h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<form>
+							<div class="form-group" hidden>
+								<label class="invisible" for="id">ID:</label>
+								<input class="invisible" type="text" class="form-control" id="id">
+							</div>
+							<div class="form-group mb-2">
+								<label for="nombre">Nombre:</label>
+								<input type="text" value="" class="form-control" id="nombre"
+									placeholder="Ingresa tu nombre">
+							</div>
+							<div class="form-group mb-2">
+								<label for="apellido">Apellido:</label>
+								<input type="text" value="" class="form-control" id="apellido"
+									placeholder="Ingresa tu apellido">
+							</div>
+							<div class="form-group">
+								<label for="nota">Nota:</label>
+								<input type="number" value="" class="form-control" id="promedio"
+									placeholder="Ingresa tu promedio">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					<button onclick="enviarForm()" type="button"
+						class="btn btn-primary">Enviar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
